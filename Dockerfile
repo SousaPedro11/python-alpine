@@ -8,6 +8,8 @@ ENV PYTHONUNBUFFERED 1
 RUN rm -rf /var/cache/apk/* && \
     apk update && \
     apk add make && \
+    apk add python3-dev && \
+    apk add postgresql-dev && \
     apk add build-base && \
     apk add gcc && \
     apk add libffi-dev && \
