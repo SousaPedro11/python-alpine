@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:3.8-alpine
 
 LABEL maintainer="Pedro Sousa <ppls2106@gmail.com>"
 
@@ -8,8 +8,6 @@ ENV PYTHONUNBUFFERED 1
 RUN rm -rf /var/cache/apk/* && \
     apk update && \
     apk add make && \
-    apk add python3-dev && \
-    apk add postgresql-dev && \
     apk add build-base && \
     apk add gcc && \
     apk add libffi-dev && \
@@ -18,6 +16,8 @@ RUN rm -rf /var/cache/apk/* && \
     apk add git && \
     apk add zsh git-zsh-completion && \
     apk del build-base && \
+    apk add python3-dev && \
+    apk add postgresql-dev && \
     rm -rf /var/cache/apk/*
 
 RUN pip install --no-cache-dir --upgrade pip
@@ -37,7 +37,7 @@ RUN sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/t
 RUN sed -i -e "s/bin\/ash/bin\/zsh/" /etc/passwd
 
 RUN echo 'eval "`pip completion --zsh`"' >> /root/.zshrc && \
-echo 'compctl -K _pip_completion pip3' >> /root/.zshrc
+    echo 'compctl -K _pip_completion pip3' >> /root/.zshrc
 
 EXPOSE 5000
 
