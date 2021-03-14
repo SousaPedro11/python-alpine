@@ -1,4 +1,4 @@
-FROM python:3.8-alpine
+FROM python:alpine
 
 LABEL maintainer="Pedro Sousa <ppls2106@gmail.com>"
 
